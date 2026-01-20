@@ -1,70 +1,35 @@
-import json
+class Calculator:
+    def add(self, a, b):
+        """Adds two numbers."""
+        return a + b
 
-class TodoApp:
-    def __init__(self, file_name="tasks.json"):
-        self.file_name = file_name
-        self.tasks = []
-        self.load_tasks()
+    def subtract(self, a, b):
+        """Subtracts the second number from the first."""
+        return a - b
 
-    def add_task(self, task):
-        """Add a new task."""
-        self.tasks.append({"task": task, "done": False})
-        self.save_tasks()
+    def divide(self, a, b):
+        """Divides the first number by the second. Returns error if dividing by 0."""
+        if b == 0:
+            return "Error: Division by zero is not allowed."
+        return a / b
 
-    def delete_task(self, task_index):
-        """Delete a task."""
-        if 0 <= task_index < len(self.tasks):
-            del self.tasks[task_index]
-            self.save_tasks()
-        else:
-            print("Invalid task index.")
-
-    def mark_task_done(self, task_index):
-        """Mark a task as done."""
-        if 0 <= task_index < len(self.tasks):
-            self.tasks[task_index]["done"] = True
-            self.save_tasks()
-        else:
-            print("Invalid task index.")
-
-    def show_tasks(self):
-        """Display all tasks."""
-        if not self.tasks:
-            print("No tasks available.")
-        else:
-            for index, task in enumerate(self.tasks):
-                status = "Done" if task["done"] else "Pending"
-                print(f"{index + 1}. {task['task']} [{status}]")
-
-    def save_tasks(self):
-        """Save tasks to a JSON file."""
-        with open(self.file_name, 'w') as file:
-            json.dump(self.tasks, file)
-
-    def load_tasks(self):
-        """Load tasks from the JSON file."""
-        try:
-            with open(self.file_name, 'r') as file:
-                self.tasks = json.load(file)
-        except FileNotFoundError:
-            self.tasks = []
 
 # Example usage
 if __name__ == "__main__":
-    app = TodoApp()
-
-    # Add some tasks
-    app.add_task("Complete DevOps assignment")
-    app.add_task("Read Python documentation")
-
-    # Show tasks
-    app.show_tasks()
-
-    # Mark the first task as done
-    app.mark_task_done(0)
-
-    # Delete the second task
-    app.delete_task(1)
-
-    # Show tasks again after updates
-    app.show_tasks()
+    calc = Calculator()
+    
+    # Addition
+    result_add = calc.add(10, 5)
+    print(f"10 + 5 = {result_add}")
+    
+    # Subtraction
+    result_sub = calc.subtract(10, 5)
+    print(f"10 - 5 = {result_sub}")
+    
+    # Division
+    result_div = calc.divide(10, 5)
+    print(f"10 / 5 = {result_div}")
+    
+    # Division by zero
+    result_div_zero = calc.divide(10, 0)
+    print(f"10 / 0 = {result_div_zero}")
