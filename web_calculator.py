@@ -29,6 +29,10 @@ if __name__ == "__main__":
     # Subtraction
     result_sub = calc.subtract(10, 5)
     print(f"10 - 5 = {result_sub}")
+
+    # Multiplication
+    result_mul = calc.multiply(10, 5)
+    print(f"10 * 5 = {result_mul}")
     
     # Division
     result_div = calc.divide(10, 5)
