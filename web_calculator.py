@@ -6,6 +6,10 @@ class Calculator:
     def subtract(self, a, b):
         """Subtracts the second number from the first."""
         return a - b
+    
+    def multiply(self, a, b):
+        """Multiplies both numbers."""
+        return a * b
 
     def divide(self, a, b):
         """Divides the first number by the second. Returns error if dividing by 0."""
