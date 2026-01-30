@@ -1,7 +1,7 @@
 /* 1. Global Reset & Typography */
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-color: #3acb68;
+    background-color: #e5e5e5;
     margin: 0;
     display: flex;
     justify-content: center;
