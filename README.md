@@ -1,6 +1,6 @@
-# C270 Todo List Application
+# C270 Calculator Application
 
-A Flask-based todo list application with CI/CD pipeline, Docker containerization, and Docker Swarm orchestration.
+A Flask-based Calculator application with CI/CD pipeline, Docker containerization, and Docker Swarm orchestration.
 
 ## 🚀 Features
 
