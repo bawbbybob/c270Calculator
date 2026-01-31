@@ -19,5 +19,5 @@ class Calculator:
     def divide(self, left, right):
         """Divides the first number by the second. Returns error if dividing by 0."""
         if right == 0:
-            return "Error: Division by Zero"
+            return "Error: Division by zero is not allowed."
         return left / right
