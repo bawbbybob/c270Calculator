@@ -1,3 +1,5 @@
+import math
+
 """Calculator logic module."""
 
 
