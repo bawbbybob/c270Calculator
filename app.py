@@ -1,3 +1,5 @@
+"""Flask web app for the calculator UI."""
+
 from flask import Flask, render_template, request
 from calculator import Calculator
 
@@ -6,6 +8,7 @@ calc = Calculator()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    """Render calculator page and process operations."""
     result = ""
 
     if request.method == 'POST':

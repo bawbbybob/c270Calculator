@@ -1,4 +1,8 @@
+"""Calculator logic module."""
+
+
 class Calculator:
+    """Basic arithmetic operations."""
     def add(self, a, b):
         """Adds two numbers."""
         return a + b
