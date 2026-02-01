@@ -1,30 +1,47 @@
-﻿version: '3.8'
+﻿# Docker Compose version - 3.8 supports swarm mode features
+version: '3.8'
 
+# Define all services (containers) for the application
 services:
-  todolist-app:
+  # Name of the service/container
+  calculator-app:
+    # Build the image from Dockerfile in current directory
     build: .
-    image: c270todolist:latest
+    # Name and tag for the built image
+    image: c270calcapp:latest
+    # Map port 8080 from host to port 8080 in container
     ports:
       - "8080:8080"
+    
+    # Docker Swarm deployment configuration
     deploy:
+      # Run 3 copies of this container across the swarm nodes
       replicas: 3
+      # Auto-restart policy if container crashes
       restart_policy:
         condition: on-failure
-        delay: 5s
-        max_attempts: 3
+        delay: 5s  # Wait 5 seconds before restarting
+        max_attempts: 3  # Try restarting up to 3 times
+      # Rolling update configuration (how to update containers without downtime)
       update_config:
-        parallelism: 1
-        delay: 10s
+        parallelism: 1  # Update 1 container at a time
+        delay: 10s  # Wait 10 seconds between updating each container
+      # Resource constraints per container
       resources:
-        limits:
-          cpus: '0.5'
-          memory: 512M
-        reservations:
-          cpus: '0.25'
-          memory: 256M
+        limits:  # Maximum resources a container can use
+          cpus: '0.5'  # Max 0.5 CPU cores
+          memory: 512M  # Max 512 MB RAM
+        reservations:  # Guaranteed minimum resources
+          cpus: '0.25'  # Reserve 0.25 CPU cores
+          memory: 256M  # Reserve 256 MB RAM
+    
+    # Connect this service to the calculator-network
     networks:
-      - todolist-network
+      - calculator-network
 
+# Define networks for inter-container communication
 networks:
-  todolist-network:
+  # Name of the network
+  calculator-network:
+    # Overlay driver enables swarm-wide networking across nodes
     driver: overlay
