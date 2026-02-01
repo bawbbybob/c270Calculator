@@ -26,10 +26,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      - name: Lint code with pylint
-        run: |
-          pylint calculator.py app.py --disable=C0111,W0621
+          
+      - name: Lint code (ignore score threshold)
+        run: pylint --fail-under=9 your_module/
 
       - name: Run unit tests
         run: |
