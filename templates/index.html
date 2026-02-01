@@ -3,30 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team 2 | DevOps Calculator</title>
-    <style>
-        /* Modern UI Styling */
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .calculator-card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 320px; }
-        h2 { color: #2c3e50; text-align: center; margin-bottom: 1.5rem; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
-        
-        .input-group { margin-bottom: 1rem; }
-        label { display: block; margin-bottom: 5px; color: #7f8c8d; font-size: 0.9rem; }
-        input, select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 1rem; }
-        
-        button { width: 100%; padding: 12px; background-color: #3498db; color: white; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; transition: background 0.3s; margin-top: 10px; }
-        button:hover { background-color: #2980b9; }
-
-        .result-box { margin-top: 1.5rem; padding: 15px; background-color: #e8f6fd; border-left: 5px solid #3498db; border-radius: 4px; }
-        .result-text { font-weight: bold; color: #2980b9; font-size: 1.2rem; }
-    </style>
+    <title>Team 2 | DevOps Calculator V2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
 
 <div class="calculator-card">
-    <h2>NoDaddy Calculator</h2>
+    <h2>YesDaddy Calculator</h2>
     
-    <form method="POST">
+    <form method="POST" id="calcForm">
         <div class="input-group">
             <label>First Number</label>
             <input type="number" step="any" name="num1" required placeholder="0">
@@ -34,17 +19,19 @@
 
         <div class="input-group">
             <label>Operation</label>
-            <select name="operation">
+            <select name="operation" id="operationSelect" onchange="toggleInputs()">
                 <option value="add">Add (+)</option>
                 <option value="subtract">Subtract (-)</option>
                 <option value="multiply">Multiply (×)</option>
                 <option value="divide">Divide (÷)</option>
+                <option value="power">Power (^)</option>
+                <option value="radical">Radical (√)</option>
             </select>
         </div>
 
-        <div class="input-group">
+        <div class="input-group" id="secondNumGroup">
             <label>Second Number</label>
-            <input type="number" step="any" name="num2" required placeholder="0">
+            <input type="number" step="any" name="num2" id="num2" required placeholder="0">
         </div>
 
         <button type="submit">Calculate</button>
@@ -52,11 +39,29 @@
 
     {% if result is not none %}
     <div class="result-box">
-        <label>Result:</label>
-        <div class="result-text">{{ result }}</div>
+        <span class="result-label">Computed Result</span>
+        <div class="result-value">{{ result }}</div>
     </div>
     {% endif %}
 </div>
+
+<script>
+    function toggleInputs() {
+        const operation = document.getElementById('operationSelect').value;
+        const secondNumGroup = document.getElementById('secondNumGroup');
+        const num2Input = document.getElementById('num2');
+
+        if (operation === 'radical') {
+            secondNumGroup.style.display = 'none'; // Hide second input for Radical [cite: 10]
+            num2Input.required = false; // Not required for square root
+        } else {
+            secondNumGroup.style.display = 'block';
+            num2Input.required = true;
+        }
+    }
+    // Run on load to ensure correct state if page reloads with a result
+    window.onload = toggleInputs;
+</script>
 
 </body>
 </html>
