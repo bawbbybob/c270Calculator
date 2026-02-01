@@ -64,27 +64,30 @@ The [docker-compose.yml](docker-compose.yml) file defines orchestration settings
 # Step 1: Initialize Swarm
 docker swarm init
 
-# Step 2: Deploy stack (starts 3 replicas)
-docker stack deploy -c docker-compose.yml todolist-stack
+# Step 2: Build the image
+docker build -t c270todolist:latest .
 
-# Step 3: View services and replicas
+# Step 3: Deploy stack (starts 3 replicas)
+docker stack deploy -c docker-compose.yml yesdaddy-calc-stack
+
+# Step 4: View services and replicas
 docker service ls
-docker service ps todolist-stack_todolist-app
+docker service ps yesdaddy-calc-stack_todolist-app
 
-# Step 4: Scale UP to 5 replicas (horizontal scaling)
-docker service scale todolist-stack_todolist-app=5
+# Step 5: Scale UP to 5 replicas (horizontal scaling)
+docker service scale yesdaddy-calc-stack_todolist-app=5
 
 # Step 5: View updated replicas
-docker service ps todolist-stack_todolist-app
+docker service ps yesdaddy-calc-stack_todolist-app
 
 # Step 6: Scale DOWN to 2 replicas
-docker service scale todolist-stack_todolist-app=2
+docker service scale yesdaddy-calc-stack_todolist-app=2
 
 # Step 7: View service logs
-docker service logs todolist-stack_todolist-app
+docker service logs yesdaddy-calc-stack_todolist-app
 
 # Cleanup: Remove stack
-docker stack rm todolist-stack
+docker stack rm yesdaddy-calc-stack 
 
 # Cleanup: Leave swarm
 docker swarm leave --force
@@ -145,4 +148,4 @@ c270todolist/
 
 ## 📝 License
 
-Educational project for C270.
+Educational project for C270 CA2.
