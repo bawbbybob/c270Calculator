@@ -8,7 +8,7 @@ Write-Host ""
 Write-Host "Step 1: Initializing Docker Swarm..." -ForegroundColor Yellow
 Write-Host "Command: docker swarm init" -ForegroundColor Gray
 docker swarm init
-Write-Host "✓ Docker Swarm initialized" -ForegroundColor Green
+Write-Host "[OK] Docker Swarm initialized" -ForegroundColor Green
 Write-Host ""
 
 # Pause for user to see output
@@ -18,7 +18,7 @@ Read-Host "Press Enter to continue to building the image"
 Write-Host "Step 2: Building Docker image..." -ForegroundColor Yellow
 Write-Host "Command: docker build -t c270calcapp:latest ." -ForegroundColor Gray
 docker build -t c270calcapp:latest .
-Write-Host "✓ Image built successfully" -ForegroundColor Green
+Write-Host "[OK] Image built successfully" -ForegroundColor Green
 Write-Host ""
 
 # Pause for user to see output
@@ -28,7 +28,7 @@ Read-Host "Press Enter to continue to deploying the stack"
 Write-Host "Step 3: Deploying stack with 3 replicas..." -ForegroundColor Yellow
 Write-Host "Command: docker stack deploy -c docker-compose.yml yesdaddy-calc-stack" -ForegroundColor Gray
 docker stack deploy -c docker-compose.yml yesdaddy-calc-stack
-Write-Host "✓ Stack deployed" -ForegroundColor Green
+Write-Host "[OK] Stack deployed" -ForegroundColor Green
 Write-Host ""
 
 # Pause for deployment to stabilize
@@ -43,7 +43,7 @@ Write-Host ""
 Write-Host "Detailed service status:" -ForegroundColor Yellow
 Write-Host "Command: docker service ps yesdaddy-calc-stack_calculator-app" -ForegroundColor Gray
 docker service ps yesdaddy-calc-stack_calculator-app
-Write-Host "✓ Services running" -ForegroundColor Green
+Write-Host "[OK] Services running" -ForegroundColor Green
 Write-Host ""
 
 # Pause for user to see output
@@ -59,7 +59,7 @@ docker service ls
 Write-Host ""
 Write-Host "All 5 replicas:" -ForegroundColor Yellow
 docker service ps yesdaddy-calc-stack_calculator-app
-Write-Host "✓ Successfully scaled to 5 replicas" -ForegroundColor Green
+Write-Host "[OK] Successfully scaled to 5 replicas" -ForegroundColor Green
 Write-Host ""
 
 # Pause for user to see scaling
@@ -75,7 +75,7 @@ docker service ls
 Write-Host ""
 Write-Host "Remaining 2 replicas:" -ForegroundColor Yellow
 docker service ps yesdaddy-calc-stack_calculator-app
-Write-Host "✓ Successfully scaled down to 2 replicas" -ForegroundColor Green
+Write-Host "[OK] Successfully scaled down to 2 replicas" -ForegroundColor Green
 Write-Host ""
 
 # Pause for user to see scaling
@@ -91,7 +91,7 @@ docker service ls
 Write-Host ""
 Write-Host "Final 3 replicas:" -ForegroundColor Yellow
 docker service ps yesdaddy-calc-stack_calculator-app
-Write-Host "✓ Successfully scaled back to 3 replicas" -ForegroundColor Green
+Write-Host "[OK] Successfully scaled back to 3 replicas" -ForegroundColor Green
 Write-Host ""
 
 Write-Host "=== Demo Complete ===" -ForegroundColor Cyan
