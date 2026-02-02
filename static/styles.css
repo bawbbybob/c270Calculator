@@ -1,87 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
 /* 1. Global Reset & Typography */
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-color: #e5e5e5;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Vibrant gradient background */
+    font-family: 'Poppins', sans-serif; /* A more modern, rounded font */
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    color: #333;
 }
 
 /* 2. Calculator Container */
 .calculator-card {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* The "frosted glass" effect */
     width: 100%;
-    max-width: 380px;
+    max-width: 400px;
     padding: 2.5rem;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e1e4e8;
+    border-radius: 24px; /* More rounded corners for a modern feel */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* 3. Header Styling */
 h2 {
     text-align: center;
-    color: #1a73e8; /* Corporate Blue */
+    color: #6a11cb; /* Updated from blue to match brand purple */
     margin-top: 0;
     margin-bottom: 2rem;
     font-weight: 600;
     letter-spacing: -0.5px;
 }
-
 /* 4. Form & Input Groups */
 .input-group {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem; /* Slightly more spacing for a cleaner look */
 }
 
 label {
     display: block;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #5f6368;
-    margin-bottom: 8px;
+    font-size: 0.75rem; /* Smaller, modern label size */
+    font-weight: 700;
+    color: #6a11cb; /* Matches the new brand color */
+    margin-bottom: 10px;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 input, select {
     width: 100%;
-    padding: 12px 15px;
-    border: 2px solid #e8eaed;
-    border-radius: 8px;
+    padding: 14px 18px;
+    background-color: #f8f9fa; /* Soft gray background instead of white */
+    border: 2px solid transparent; /* Border stays hidden until focused */
+    border-radius: 12px;
     font-size: 1rem;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    box-sizing: border-box; /* Ensures padding doesn't break width */
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    color: #2d3436;
 }
 
 input:focus, select:focus {
     outline: none;
-    border-color: #1a73e8;
-    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+    border-color: #6a11cb; /* Purple focus ring to match Version 2 */
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(106, 17, 203, 0.1);
 }
 
 /* 5. Button Styling */
 button {
     width: 100%;
     padding: 14px;
-    background-color: #1a73e8;
+    /* Gradient replaces solid color for a modern look */
+    background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); 
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px; /* More rounded to match Version 2 card */
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
+    /* Smoother transition for high-end feel */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     margin-top: 10px;
 }
 
 button:hover {
-    background-color: #1557b0;
+    /* Button lifts and glow effect added */
+    transform: translateY(-3px); 
+    box-shadow: 0 10px 20px rgba(37, 117, 252, 0.3);
+    background: linear-gradient(to right, #2575fc 0%, #6a11cb 100%);
 }
 
 button:active {
-    transform: scale(0.98);
+    transform: scale(0.95); /* Deeper click feel */
 }
 
 /* 6. Result Box */
@@ -90,7 +100,7 @@ button:active {
     padding: 1rem;
     background-color: #f8f9fa;
     border-radius: 8px;
-    border-left: 4px solid #1a73e8;
+    border-left: 4px solid #6a11cb; /* Updated from blue to purple */
     text-align: center;
 }
 

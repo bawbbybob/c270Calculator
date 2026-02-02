@@ -1,55 +1,67 @@
-﻿"""Calculator logic module."""
+﻿"""Calculator module for basic mathematical operations."""
+import math
 
 
 class Calculator:
-    """Basic arithmetic operations."""
+    """A simple calculator class for arithmetic operations."""
 
     def add(self, a, b):
         """Adds two numbers."""
-        if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
-            raise TypeError("Both arguments must be numbers")
         return a + b
 
     def subtract(self, a, b):
         """Subtracts the second number from the first."""
-        if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
-            raise TypeError("Both arguments must be numbers")
         return a - b
 
     def multiply(self, a, b):
         """Multiplies both numbers."""
-        if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
-            raise TypeError("Both arguments must be numbers")
         return a * b
 
     def divide(self, a, b):
         """Divides the first number by the second. Returns error if dividing by 0."""
-        if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
-            raise TypeError("Both arguments must be numbers")
         if b == 0:
-            return "Error: Division by zero is not allowed."
+            return "Error: Division by Zero"
         return a / b
 
+    def power(self, a, b):
+        """Returns 'a' raised to the power of 'b'."""
+        return a ** b
 
-# Example usage
-calc = Calculator()
+    def radical(self, a):
+        """Returns the square root of 'a'. Returns error for negative numbers."""
+        if a < 0:
+            return "Error: Negative Radical"
+        return math.sqrt(a)
 
-# Addition
-RESULT_ADD = calc.add(10, 5)
-print(f"10 + 5 = {RESULT_ADD}")
 
-# Subtraction
-RESULT_SUB = calc.subtract(10, 5)
-print(f"10 - 5 = {RESULT_SUB}")
+if __name__ == "__main__":
+    calc = Calculator()
 
-# Multiplication
-RESULT_MUL = calc.multiply(10, 5)
-print(f"10 * 5 = {RESULT_MUL}")
+    # Addition
+    RESULT_ADD = calc.add(10, 5)
+    print(f"10 + 5 = {RESULT_ADD}")
 
-# Division
-RESULT_DIV = calc.divide(10, 5)
-print(f"10 / 5 = {RESULT_DIV}")
+    # Subtraction
+    RESULT_SUB = calc.subtract(10, 5)
+    print(f"10 - 5 = {RESULT_SUB}")
 
-# Division by zero
-RESULT_DIV_ZERO = calc.divide(10, 0)
-print(f"10 / 0 = {RESULT_DIV_ZERO}")
+    # Multiplication
+    RESULT_MUL = calc.multiply(10, 5)
+    print(f"10 * 5 = {RESULT_MUL}")
+
+    # Division
+    RESULT_DIV = calc.divide(10, 5)
+    print(f"10 / 5 = {RESULT_DIV}")
+
+    # Division by zero
+    RESULT_DIV_ZERO = calc.divide(10, 0)
+    print(f"10 / 0 = {RESULT_DIV_ZERO}")
+
+    # Power Test (e.g., 2 to the power of 3)
+    print(f"2^3 = {calc.power(2, 3)}")  # Expected: 8
+
+    # Radical Test (e.g., square root of 25)
+    print(f"√25 = {calc.radical(25)}")  # Expected: 5.0
+
+    # Negative Radical Test
+    print(f"√-1 = {calc.radical(-1)}")  # Expected: Error message
